@@ -1,0 +1,1 @@
+C:\Personal\Twilio\TwilioCapabilityToken\TwilioCapabilityToken\obj\Debug\TwilioCapabilityToken.csprojResolveAssemblyReference.cache
