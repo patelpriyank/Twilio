@@ -28,7 +28,7 @@ public class TwilioPhone implements Twilio.InitListener {
 
         try {
 
-            String capabilityToken = HttpHelper.httpGet("http://companyfoo.com/auth.php");
+            String capabilityToken = HttpHelperUtil.httpGet("http://ec2-54-209-109-97.compute-1.amazonaws.com/api/twilio/gettoken?clientid=TestCaddyAndroidApp");
             device = Twilio.createDevice(capabilityToken, null /* DeviceListener */);
         } catch (Exception e) {
             Log.e(TAG, "Failed to obtain capability token: " + e.getLocalizedMessage());
@@ -38,6 +38,13 @@ public class TwilioPhone implements Twilio.InitListener {
 
     @Override
     public void onError(Exception e) {
+        Log.e(TAG, "Twilio SDK couldn't start: " + e.getLocalizedMessage());
+    }
 
+    @Override
+    protected void finalize()
+    {
+        if (device != null)
+            device.release();
     }
 }
