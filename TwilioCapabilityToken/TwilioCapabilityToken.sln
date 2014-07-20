@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caddy.Twilio.Backend", "Caddy.Twilio.Backend\Caddy.Twilio.Backend.csproj", "{BDBF331C-6B6F-462F-A396-BC839F77D0FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caddy.Twilio.VoiceApplication", "Caddy.Twilio.VoiceApplication\Caddy.Twilio.VoiceApplication.csproj", "{6E390870-6A70-4645-8ABF-031CB4A313D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BDBF331C-6B6F-462F-A396-BC839F77D0FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDBF331C-6B6F-462F-A396-BC839F77D0FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDBF331C-6B6F-462F-A396-BC839F77D0FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E390870-6A70-4645-8ABF-031CB4A313D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E390870-6A70-4645-8ABF-031CB4A313D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E390870-6A70-4645-8ABF-031CB4A313D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E390870-6A70-4645-8ABF-031CB4A313D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

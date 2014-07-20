@@ -64,7 +64,10 @@ public class DialerActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-
+        if (view.getId() == R.id.dialButton)
+            phone.connect();
+        else if (view.getId() == R.id.hangupButton)
+            phone.disconnect();
     }
 
     @Override
