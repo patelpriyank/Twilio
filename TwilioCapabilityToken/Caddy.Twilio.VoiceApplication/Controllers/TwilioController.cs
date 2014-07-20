@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Mvc;
 using Twilio;
+using Twilio.TwiML;
+using System.Net.Http;
 
 namespace Caddy.Twilio.VoiceApplication.Controllers
 {
@@ -64,7 +67,22 @@ namespace Caddy.Twilio.VoiceApplication.Controllers
         [HttpGet]
         public virtual ActionResult VoiceTwiML()
         {
-            return new FilePathResult(MVC.Twilio.Views.VoiceTwiML, "text/xml");
+            var twiml = new TwilioResponse();
+            var say = new Say("Hello Monkey");
+            try
+            {
+                twiml.Say("Hello Monkey");
+            }
+            catch (Exception)
+            {
+                //e.printStackTrace();
+            }
+
+            Response.ContentType = "text/xml";
+            Response.Write(twiml.ToString());
+            Response.End();
+
+            return Content("");
         }
 
 	}

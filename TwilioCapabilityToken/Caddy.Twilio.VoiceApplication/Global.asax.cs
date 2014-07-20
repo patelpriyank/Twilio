@@ -18,7 +18,7 @@ namespace Caddy.Twilio.VoiceApplication
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-       /* protected void Application_AcquireRequestState(Object sender, EventArgs e)
+        /*protected void Application_AcquireRequestState(Object sender, EventArgs e)
         {
             if (Session.IsNewSession)
             {
@@ -26,6 +26,7 @@ namespace Caddy.Twilio.VoiceApplication
                 if (isCshtmlRequest)
                 {
                     Server.TransferRequest(HttpContext.Current.Request.Url.AbsolutePath);
+                   // Server.TransferRequest(HttpContext.Current.Request.Url.AbsolutePath);
                 }
             }
         }*/
