@@ -10,10 +10,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 
+public class DialerActivity extends Activity implements View.OnClickListener {
 
-public class DialerActivity extends Activity {
+    private TwilioPhone phone;
+    private EditText numberField;
+    private ImageButton dialButton;
+    private ImageButton hangupButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +30,16 @@ public class DialerActivity extends Activity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+
+        phone = new TwilioPhone(getApplicationContext());
+
+        dialButton = (ImageButton)findViewById(R.id.dialButton);
+        dialButton.setOnClickListener(this);
+
+        hangupButton = (ImageButton)findViewById(R.id.hangupButton);
+        hangupButton.setOnClickListener(this);
+
+        numberField = (EditText)findViewById(R.id.numberField);
     }
 
 
@@ -44,6 +60,18 @@ public class DialerActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View view) {
+
+    }
+
+    @Override
+    public void onDestroy(){
+        dialButton = null;
+        hangupButton = null;
+        numberField = null;
     }
 
     /**
