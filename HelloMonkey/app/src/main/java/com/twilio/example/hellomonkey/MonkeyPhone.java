@@ -14,6 +14,9 @@ import com.twilio.client.Connection;
 import com.twilio.client.Device;
 import com.twilio.client.Twilio;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MonkeyPhone implements Twilio.InitListener
 {
     private static final String TAG = "MonkeyPhone";
@@ -57,9 +60,12 @@ public class MonkeyPhone implements Twilio.InitListener
     }
 
     /** other methods **/
-    public void connect()
+    public void connect(String phoneNumber)
     {
-        connection = device.connect(null /* parameters */, null /* ConnectionListener */);
+        Map<String, String> parameters = new HashMap<String, String>();
+        parameters.put("PhoneNumber", phoneNumber);
+
+        connection = device.connect(parameters /* parameters */, null /* ConnectionListener */);
         if (connection == null)
             Log.w(TAG, "Failed to create new connection");
     }

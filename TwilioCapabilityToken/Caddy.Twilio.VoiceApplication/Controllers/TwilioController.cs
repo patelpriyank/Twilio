@@ -19,7 +19,8 @@ namespace Caddy.Twilio.VoiceApplication.Controllers
          */
         const string AccountSid = "ACa0959a66f44d578382bc1db60a452742";
         const string AuthToken = "e610c3b7667dc6453ac93f2fb1fac2fd";
-        private const string ApplicationSid = "AP0092f4ee42bb04bcfedcf1724f2dde68";
+        const string ApplicationSid = "AP0092f4ee42bb04bcfedcf1724f2dde68";
+        private const string MY_TWILIO_PHONENUMBER = "2012289935";
 
         [HttpGet]
         public virtual ActionResult Index()
@@ -63,7 +64,28 @@ namespace Caddy.Twilio.VoiceApplication.Controllers
             return Content(token);
         }
 
-        //https://demo.twilio.com/welcome/voice/
+        [HttpGet]
+        public virtual ActionResult VoiceTwiML(string PhoneNumber)
+        {
+            var twiml = new TwilioResponse();
+            try
+            {
+                var number = new Number(PhoneNumber);
+                twiml.Dial(number, new { callerId = MY_TWILIO_PHONENUMBER });
+            }
+            catch (Exception)
+            {
+                //e.printStackTrace();
+            }
+
+            Response.ContentType = "text/xml";
+            Response.Write(twiml.ToString());
+            Response.End();
+
+            return Content("");
+        }
+
+/*
         [HttpGet]
         public virtual ActionResult VoiceTwiML()
         {
@@ -84,6 +106,7 @@ namespace Caddy.Twilio.VoiceApplication.Controllers
 
             return Content("");
         }
+*/
 
 	}
 }

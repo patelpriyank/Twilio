@@ -38,7 +38,7 @@ public class HelloMonkeyActivity extends Activity implements View.OnClickListene
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.dialButton)
-            phone.connect();
+            phone.connect(numberField.getText().toString());
         else if (view.getId() == R.id.hangupButton)
             phone.disconnect();
     }
