@@ -4,26 +4,36 @@
   android:layout_height="match_parent"
   android:gravity="center_horizontal"
   android:orientation="vertical">
-    
+
+    <EditText
+        android:id="@+id/numberField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
     <ImageButton
       android:id="@+id/dialButton"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:src="@drawable/dial"
-      android:background="#000" />
+      android:background="#000"
+        android:clickable="false" />
+
+    <ImageButton
+        android:id="@+id/speakerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sound_icon"
+        android:background="#000"
+        android:clickable="false" />
 
     <ImageButton
         android:id="@+id/hangupButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/hangup"
-        android:background="#000" />
+        android:background="#000"
+        android:clickable="false" />
     
-    <EditText
-      android:id="@+id/numberField"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="20dp"
-      android:layout_marginRight="20dp" />
 
 </LinearLayout>

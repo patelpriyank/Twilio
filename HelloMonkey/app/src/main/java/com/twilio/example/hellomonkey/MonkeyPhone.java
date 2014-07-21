@@ -8,6 +8,8 @@
 package com.twilio.example.hellomonkey;
 
 import android.content.Context;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.twilio.client.Connection;
@@ -20,6 +22,7 @@ import java.util.Map;
 public class MonkeyPhone implements Twilio.InitListener
 {
     private static final String TAG = "MonkeyPhone";
+    private String ClientID;
     private Connection connection;
 
     private Device device;
@@ -27,6 +30,19 @@ public class MonkeyPhone implements Twilio.InitListener
     public MonkeyPhone(Context context)
     {
         Twilio.initialize(context, this /* Twilio.InitListener */);
+
+        TelephonyManager mTelephonyMgr = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+
+        //Returns the unique device ID, for example, the IMEI for GSM and the MEID or ESN for CDMA phones.
+        String imei = mTelephonyMgr.getDeviceId();
+/*
+        //Returns the unique subscriber ID, for example, the IMSI for a GSM phone.
+        String imsi = mTelephonyMgr.getSubscriberId();
+        //Android ID It is a 64-bit hex string which is generated on the device's first boot. Generally it won't be changed unless is factory reset.
+        String androidID = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+*/
+
+        ClientID = imei;
     }
 
     /* Twilio.InitListener method */
@@ -36,7 +52,7 @@ public class MonkeyPhone implements Twilio.InitListener
         Log.d(TAG, "Twilio SDK is ready");
 
         try {
-            String capabilityToken = HttpHelper.httpGet("http://ec2-54-209-109-97.compute-1.amazonaws.com/twilio/gettoken?clientid=caddy");
+            String capabilityToken = HttpHelper.httpGet("http://ec2-54-209-109-97.compute-1.amazonaws.com/twilio/gettoken?clientid=" + ClientID);
             device = Twilio.createDevice(capabilityToken, null /* DeviceListener */);
         } catch (Exception e) {
             Log.e(TAG, "Failed to obtain capability token: " + e.getLocalizedMessage());

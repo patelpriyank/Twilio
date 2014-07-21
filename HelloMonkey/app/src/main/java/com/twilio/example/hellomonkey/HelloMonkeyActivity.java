@@ -8,6 +8,8 @@
 package com.twilio.example.hellomonkey;
 
 import android.app.Activity;
+import android.content.Context;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -37,10 +39,19 @@ public class HelloMonkeyActivity extends Activity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.dialButton)
+        if (view.getId() == R.id.dialButton) {
+            AudioManager audioManager = (AudioManager)this.getSystemService(Context.AUDIO_SERVICE);
+            audioManager.setSpeakerphoneOn(true);
+
             phone.connect(numberField.getText().toString());
+        }
         else if (view.getId() == R.id.hangupButton)
             phone.disconnect();
+        else if(view.getId() == R.id.speakerButton)
+        {
+            AudioManager audioManager = (AudioManager)this.getSystemService(Context.AUDIO_SERVICE);
+            audioManager.setSpeakerphoneOn(true);
+        }
     }
 
     @Override
