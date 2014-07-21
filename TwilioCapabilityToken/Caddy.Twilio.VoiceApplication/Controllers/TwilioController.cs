@@ -19,7 +19,7 @@ namespace Caddy.Twilio.VoiceApplication.Controllers
          */
         const string AccountSid = "ACa0959a66f44d578382bc1db60a452742";
         const string AuthToken = "e610c3b7667dc6453ac93f2fb1fac2fd";
-        private const string ApplicationSid = "TestCaddyAndroidApp";
+        private const string ApplicationSid = "AP0092f4ee42bb04bcfedcf1724f2dde68";
 
         [HttpGet]
         public virtual ActionResult Index()

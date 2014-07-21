@@ -33,7 +33,7 @@ public class MonkeyPhone implements Twilio.InitListener
         Log.d(TAG, "Twilio SDK is ready");
 
         try {
-            String capabilityToken = HttpHelper.httpGet("http://ec2-54-209-109-97.compute-1.amazonaws.com/api/twilio/gettoken?clientid=TestCaddyAndroidApp");
+            String capabilityToken = HttpHelper.httpGet("http://ec2-54-209-109-97.compute-1.amazonaws.com/twilio/gettoken?clientid=caddy");
             device = Twilio.createDevice(capabilityToken, null /* DeviceListener */);
         } catch (Exception e) {
             Log.e(TAG, "Failed to obtain capability token: " + e.getLocalizedMessage());
