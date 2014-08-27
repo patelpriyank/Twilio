@@ -41,7 +41,8 @@ public class HelloMonkeyActivity extends Activity implements View.OnClickListene
     public void onClick(View view) {
         if (view.getId() == R.id.dialButton) {
             AudioManager audioManager = (AudioManager)this.getSystemService(Context.AUDIO_SERVICE);
-            audioManager.setSpeakerphoneOn(true);
+            //audioManager.setSpeakerphoneOn(true);
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, audioManager.getStreamMaxVolume(audioManager.STREAM_MUSIC), 0);
 
             phone.connect(numberField.getText().toString());
         }
@@ -57,5 +58,7 @@ public class HelloMonkeyActivity extends Activity implements View.OnClickListene
     @Override
     public void onDestroy(){
         numberField = null;
+
+        super.onDestroy();
     }
 }
